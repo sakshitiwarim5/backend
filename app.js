@@ -7,7 +7,7 @@ import ReservationRouter from "./routes/reservationRoute.js";
 
 const app = express();
 dotenv.config({path : "./config/config.env"});
-
+dbConnection();
 app.use(cors({
     origin:[process.env.FRONTEND_URL],
     methods: ["POST"],
@@ -18,7 +18,7 @@ app.use(cors({
 app.use(express.json());
 app.use('/api/v1/reservation',ReservationRouter)
 app.use(express.urlencoded({extended: true}));
-dbConnection();
+
 
 app.use(errorMiddleware)
 
